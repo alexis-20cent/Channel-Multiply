@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 
 type Content = {
 	id: number;
-	title: string;
 	poster_path: string;
 }
 
-type Movie = Content & {};
+type Movie = Content & {
+	title: string;
+};
 
-type Serie = Content & {};
+type Serie = Content & {
+	name: string;
+};
 
 const HTTP = {
 	async get(url: string) {
@@ -18,16 +21,20 @@ const HTTP = {
 	}
 };
 
-function List({ items }: { items: Content[] }) {
+function List({ children }: PropsWithChildren) {
 	return (
 		<section style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: '2rem'}}>	
-			{items.map(item => (
-				<article key={item.id}>
-					<h3>{item.title}</h3>
-					<img style={{ maxWidth: '100%' }} src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="" />
-				</article>
-			))}
+			{children}
 		</section>
+	);
+}
+
+function ListItem({ title, img }: { title: string, img: string}) {
+	return (
+		<article>
+			<h3>{title}</h3>
+			<img style={{ maxWidth: '100%' }} src={img} alt="" />
+		</article>
 	);
 }
 
@@ -42,7 +49,7 @@ function SearchInput({ value, onChange, ...props }: Omit<React.InputHTMLAttribut
 	);
 }
 
-function useSearch<T extends Content>(type: 'movie' | 'tv', search: string, onSuccess: (results: T[]) => void) {
+function useSearch<T>(type: 'movie' | 'tv', search: string, onSuccess: (results: T[]) => void) {
 	const cleanSearch = search.trim();
 
 	useEffect(() => {
@@ -68,11 +75,9 @@ function App() {
 	const [movies, setMovies] = useState<Movie[]>([]);
 	const [series, setSeries] = useState<Serie[]>([]);
 
-	useSearch('movie', search, results => setMovies(results));
-	useSearch('tv', search, results => setSeries(results));
+	useSearch<Movie>('movie', search, results => setMovies(results));
+	useSearch<Serie>('tv', search, results => setSeries(results));
 
-	console.log(movies);
-	
 
 	return (
 		<main>
@@ -84,9 +89,25 @@ function App() {
 				aria-label="Search a movie or a serie" 
 			/>
 			<h2>Movies</h2>
-			<List items={movies} />
+			<List>
+				{movies.map(movie => (
+					<ListItem
+						key={movie.id}
+						title={movie.title}
+						img={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
+					/>
+				))}
+			</List>
 			<h2>Series</h2>
-			<List items={series} />
+			<List>
+				{series.map(serie => (
+					<ListItem
+						key={serie.id}
+						title={serie.name}
+						img={`https://image.tmdb.org/t/p/w500/${serie.poster_path}`} 
+					/>
+				))}
+			</List>
 		</main>
 	)
 }
