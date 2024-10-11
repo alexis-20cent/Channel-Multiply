@@ -1,9 +1,11 @@
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren, useCallback, useEffect, useState } from "react";
 
 type Content = {
 	id: number;
 	poster_path: string;
 }
+
+type ContentType = 'movie' | 'tv';
 
 type Movie = Content & {
 	title: string;
@@ -49,7 +51,7 @@ function SearchInput({ value, onChange, ...props }: Omit<React.InputHTMLAttribut
 	);
 }
 
-function useSearch<T>(type: 'movie' | 'tv', search: string, onSuccess: (results: T[]) => void) {
+function useSearch<T>(type: ContentType, search: string, onSuccess: (results: T[]) => void) {
 	const cleanSearch = search.trim();
 
 	useEffect(() => {
@@ -70,14 +72,18 @@ function useSearch<T>(type: 'movie' | 'tv', search: string, onSuccess: (results:
 	}, [cleanSearch, onSuccess, type]);
 }
 
+function useContents<T>(type: ContentType, search: string): T[] {
+	const [contents, setContents] = useState<T[]>([]);
+	const saveContents = useCallback((results: T[]) => setContents(results), []);
+	useSearch<T>(type, search, saveContents);
+	return contents;
+}
+
 function App() {
 	const [search, setSearch] = useState<string>('');
-	const [movies, setMovies] = useState<Movie[]>([]);
-	const [series, setSeries] = useState<Serie[]>([]);
 
-	useSearch<Movie>('movie', search, results => setMovies(results));
-	useSearch<Serie>('tv', search, results => setSeries(results));
-
+	const movies = useContents<Movie>('movie', search);
+	const series = useContents<Serie>('tv', search);
 
 	return (
 		<main>
@@ -109,7 +115,7 @@ function App() {
 				))}
 			</List>
 		</main>
-	)
+	);
 }
 
 export default App;
