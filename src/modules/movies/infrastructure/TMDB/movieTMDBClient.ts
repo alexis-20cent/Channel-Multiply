@@ -1,4 +1,4 @@
-import { TMDBclient } from "../../../../utils/clients/TMDBclient";
+import { TMDBclient } from "@/utils/clients/TMDBclient";
 import { MovieSearchTMDBDTO, MovieTMDBDTO } from "./movieTMDBDTO";
 
 export const movieTMDBClient = TMDBclient<MovieTMDBDTO>('/movie');

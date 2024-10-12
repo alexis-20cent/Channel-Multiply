@@ -1,9 +1,9 @@
-import { SearchInput } from "../../shared/SearchInput/Index";
-import { Movies } from "../../../modules/movies/infrastructure/components/Movies";
-import { Series } from "../../../modules/series/infrastructure/components/Series";
 import { useState } from "react";
-import { useMovies } from "../../../modules/movies/infrastructure/hooks/useMovies";
-import { useSeries } from "../../../modules/series/infrastructure/hooks/useSeries";
+import { SearchInput } from "@/components/shared/SearchInput/Index";
+import { Movies } from "@/modules/movies/infrastructure/components/Movies";
+import { Series } from "@/modules/series/infrastructure/components/Series";
+import { useMovies } from "@/modules/movies/infrastructure/hooks/useMovies";
+import { useSeries } from "@/modules/series/infrastructure/hooks/useSeries";
 
 function App() {
 	const [search, setSearch] = useState<string>('');

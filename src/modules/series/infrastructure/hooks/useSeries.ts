@@ -1,4 +1,4 @@
-import { createUseSearch, useContents } from "../../../contents/infrastructure/hooks/useContents";
+import { createUseSearch, useContents } from "@/modules/contents/infrastructure/hooks/useContents";
 import { Serie } from "../../domain/Serie";
 import { serieTMDBRepository } from "../TMDB/serieTMDBRepository";
 
