@@ -2,7 +2,7 @@ import { List } from '@/components/shared/List/Index';
 import { ListItem } from '@/components/shared/ListItem/Index';
 import { Movie } from '../../domain/Movie';
 
-type MoviesProps = {
+export type MoviesProps = {
   movies: Movie[];
 };
 

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ContentRepository } from '../../domain/ContentRepository';
 import { Content } from '../../domain/Content';
 
-type useSearchType<T extends Content> = (search: string, onSuccess: (results: T[]) => void) => void;
+export type useSearchType<T extends Content> = (search: string, onSuccess: (results: T[]) => void) => void;
 
 function createUseSearch<T extends Content>(repository: ContentRepository<T>) {
   return function(search: string, onSuccess: (results: T[]) => void) {

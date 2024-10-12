@@ -9,14 +9,14 @@ export type ContextValue = {
 
 export const ApplicationContext = React.createContext<ContextValue>({} as ContextValue);
 
-interface Props {
+export interface ApplicationProviderProps {
   children: React.ReactNode;
   dependencies: {
     movieRepository: MovieRepository;
     serieRepository: SerieRepository;
   };
 }
-export const ApplicationProvider = ({ children, dependencies }: Props) => {
+export const ApplicationProvider = ({ children, dependencies }: ApplicationProviderProps) => {
   return (
     <ApplicationContext.Provider
       value={{

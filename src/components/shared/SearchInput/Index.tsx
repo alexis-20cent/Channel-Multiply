@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 
-type SearchInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> & {
+export type SearchInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> & {
   value: string;
   onChange: (value: string) => void;
 };

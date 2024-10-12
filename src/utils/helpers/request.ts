@@ -1,6 +1,6 @@
 import { stringifyParams } from './stringifyParams';
 
-type ParamValue = number | string | boolean | number[] | string[] | boolean[];
+export type ParamValue = number | string | boolean | number[] | string[] | boolean[];
 
 export type Params = Record<string, ParamValue>;
 

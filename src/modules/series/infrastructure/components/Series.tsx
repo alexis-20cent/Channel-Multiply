@@ -2,7 +2,7 @@ import { List } from '@/components/shared/List/Index';
 import { ListItem } from '@/components/shared/ListItem/Index';
 import { Serie } from '../../domain/Serie';
 
-type SeriesProps = {
+export type SeriesProps = {
   series: Serie[];
 };
 

@@ -1,7 +1,7 @@
 import { ElementType, HtmlHTMLAttributes } from 'react';
 import './style.scss';
 
-type ListItemProps = HtmlHTMLAttributes<HTMLElement> & {
+export type ListItemProps = HtmlHTMLAttributes<HTMLElement> & {
   as?: ElementType;
   title: string;
   img: string;
