@@ -31,3 +31,4 @@ coverage
 /playwright/.cache/
 /playwright/.auth/
 /storage
+*storybook.log
