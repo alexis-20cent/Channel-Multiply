@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "types": "tsc --noEmit -p tsconfig.app.json",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:types": "npm run lint && npm run types",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -22,6 +25,7 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.12",
     "globals": "^15.9.0",
+    "neostandard": "^0.11.6",
     "sass": "^1.79.5",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.7.0",

@@ -1,7 +1,7 @@
-import { getContent } from "./getContent";
-import { searchContents } from "./searchContents";
+import { getContent } from './getContent';
+import { searchContents } from './searchContents';
 
 export {
-	getContent,
-	searchContents,
+  getContent,
+  searchContents,
 };

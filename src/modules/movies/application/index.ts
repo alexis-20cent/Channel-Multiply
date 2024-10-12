@@ -1,7 +1,7 @@
-import { searchMovies } from "./searchMovies";
-import { getMovie } from "./getMovie";
+import { searchMovies } from './searchMovies';
+import { getMovie } from './getMovie';
 
 export {
-	getMovie,
-	searchMovies,
+  getMovie,
+  searchMovies,
 };
