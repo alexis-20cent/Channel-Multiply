@@ -17,10 +17,7 @@
     "test": "vitest",
     "test:e2e": "playwright test",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-	"deploy:doc": "surge --project ./docs --domain doc.canalmultiply.surge.sh",
-	"deploy:storybook": "surge --project ./storybook-static --domain story.canalmultiply.surge.sh",
-	"deploy:build": "surge --project ./dist --domain canalmultiply.surge.sh"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "react": "^18.3.1",
