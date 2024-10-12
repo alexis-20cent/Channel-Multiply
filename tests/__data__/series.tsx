@@ -5,7 +5,13 @@ const serie: Serie = {
 	title: 'Hello',
 };
 
-const series: Serie[] = [serie, serie, serie];
+const series: Serie[] = [serie, {
+	id: 2,
+	title: 'Hello',
+}, {
+	id: 3,
+	title: 'Hello',
+}];
 
 export { serie, series };
 

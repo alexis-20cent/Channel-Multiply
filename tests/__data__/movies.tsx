@@ -5,7 +5,13 @@ const movie: Movie = {
 	title: 'Hello',
 };
 
-const movies: Movie[] = [movie, movie, movie];
+const movies: Movie[] = [movie, {
+	id: 2,
+	title: 'Hello',
+},{
+	id: 3,
+	title: 'Hello',
+}];
 
 export { movie, movies };
 
