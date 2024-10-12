@@ -1,8 +1,9 @@
 import { createUseSearch, useContents } from '@/modules/contents/infrastructure/hooks/useContents';
 import { Serie } from '../../domain/Serie';
-import { serieTMDBRepository } from '../TMDB/serieTMDBRepository';
+import { useApplication } from '@/contexts/appContext/useApplication';
 
 export function useSeries (search: string) {
-  const useSearch = createUseSearch<Serie>(serieTMDBRepository);
+  const { serieRepository } = useApplication();
+  const useSearch = createUseSearch<Serie>(serieRepository);
   return useContents<Serie>(useSearch, search);
 }
