@@ -16,13 +16,6 @@ createRoot(document.getElementById('root')!).render(
       }}
     >
       <App />
-      <button onClick={() => {
-        if (Math.random() < 1) {
-          throw Error('coucou');
-        }
-      }}
-      >Break the world
-      </button>
     </ApplicationProvider>
   </StrictMode>
 );
