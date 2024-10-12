@@ -5,7 +5,7 @@ import { Series } from '@/modules/series/infrastructure/components/Series';
 import { useMovies } from '@/modules/movies/infrastructure/hooks/useMovies';
 import { useSeries } from '@/modules/series/infrastructure/hooks/useSeries';
 
-function App () {
+function App() {
   const [search, setSearch] = useState<string>('');
 
   const movies = useMovies(search);

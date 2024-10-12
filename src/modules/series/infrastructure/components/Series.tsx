@@ -6,7 +6,7 @@ type SeriesProps = {
   series: Serie[];
 };
 
-function Series ({ series }: SeriesProps) {
+function Series({ series }: SeriesProps) {
   return (
     <section>
       <h2>Series</h2>

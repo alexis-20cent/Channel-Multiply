@@ -6,7 +6,7 @@ type MoviesProps = {
   movies: Movie[];
 };
 
-function Movies ({ movies }: MoviesProps) {
+function Movies({ movies }: MoviesProps) {
   return (
     <section>
       <h2>Movies</h2>

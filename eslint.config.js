@@ -32,6 +32,7 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       '@stylistic/semi': ['error', 'always'],
+	  '@stylistic/space-before-function-paren': ['error', 'never'],
     },
   }
 );

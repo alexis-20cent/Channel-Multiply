@@ -5,7 +5,7 @@ type SearchInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'o
   onChange: (value: string) => void;
 };
 
-function SearchInput ({ value, onChange, ...props }: SearchInputProps) {
+function SearchInput({ value, onChange, ...props }: SearchInputProps) {
   return (
     <input
       type='search'

@@ -7,7 +7,7 @@ type ListItemProps = HtmlHTMLAttributes<HTMLElement> & {
   img: string;
 };
 
-function ListItem ({ as, title, img, ...props }: ListItemProps) {
+function ListItem({ as, title, img, ...props }: ListItemProps) {
   const Component = as || 'div';
   return (
     <Component {...props}>
