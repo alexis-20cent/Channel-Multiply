@@ -15,7 +15,13 @@ jobs:
         cache: 'yarn'
     - run: yarn --frozen-lockfile
     - run: yarn doc
-    - run: yarn deploy:doc
+    - name: Deploy doc
+      uses: dswistowski/surge-sh-action@v1
+      with:
+        domain: 'doc.canalmultiply.surge.sh'
+        project: './docs'
+        login: ${{ secrets.SURGE_LOGIN }}
+        token: ${{ secrets.SURGE_TOKEN }}
 
   story:
     runs-on: ubuntu-latest
@@ -26,8 +32,14 @@ jobs:
         node-version: 20.x
         cache: 'yarn'
     - run: yarn --frozen-lockfile
-    - run: yarn storybok
-    - run: yarn deploy:story
+    - run: yarn storybook
+    - name: Deploy storybook
+      uses: dswistowski/surge-sh-action@v1
+      with:
+        domain: 'story.canalmultiply.surge.sh'
+        project: './storybook-static'
+        login: ${{ secrets.SURGE_LOGIN }}
+        token: ${{ secrets.SURGE_TOKEN }}
 
   build:
     runs-on: ubuntu-latest
@@ -39,5 +51,11 @@ jobs:
         cache: 'yarn'
     - run: yarn --frozen-lockfile
     - run: yarn build
-    - run: yarn deploy:build
+    - name: Deploy build
+      uses: dswistowski/surge-sh-action@v1
+      with:
+        domain: 'canalmultiply.surge.sh'
+        project: './dist'
+        login: ${{ secrets.SURGE_LOGIN }}
+        token: ${{ secrets.SURGE_TOKEN }}
 
