@@ -21,6 +21,7 @@ jobs:
     - run: yarn --frozen-lockfile
 
   lint:
+    needs: install
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -31,6 +32,7 @@ jobs:
     - run: yarn lint:types
 
   test:
+    needs: install
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -41,6 +43,7 @@ jobs:
     - run: yarn test
 
   e2e:
+    needs: install
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
