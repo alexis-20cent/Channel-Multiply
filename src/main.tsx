@@ -6,10 +6,6 @@ import { ApplicationProvider } from './contexts/appContext';
 import { movieTMDBRepository } from './modules/movies/infrastructure/TMDB/movieTMDBRepository';
 import { serieTMDBRepository } from './modules/series/infrastructure/TMDB/serieTMDBRepository';
 
-export function toto(n:number) {
-  return n * 2;
-}
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ApplicationProvider

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SearchInput } from '@/components/shared/SearchInput/Index';
+import { SearchInput } from '@/components/shared/SearchInput';
 import { Movies } from '@/modules/movies/infrastructure/components/Movies';
 import { Series } from '@/modules/series/infrastructure/components/Series';
 import { useMovies } from '@/modules/movies/infrastructure/hooks/useMovies';

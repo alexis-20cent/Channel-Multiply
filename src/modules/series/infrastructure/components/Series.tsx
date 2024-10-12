@@ -1,5 +1,5 @@
-import { List } from '@/components/shared/List/Index';
-import { ListItem } from '@/components/shared/ListItem/Index';
+import { List } from '@/components/shared/List';
+import { ListItem } from '@/components/shared/ListItem';
 import { Serie } from '../../domain/Serie';
 
 export type SeriesProps = {

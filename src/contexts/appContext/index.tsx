@@ -16,6 +16,7 @@ export interface ApplicationProviderProps {
     serieRepository: SerieRepository;
   };
 }
+
 export const ApplicationProvider = ({ children, dependencies }: ApplicationProviderProps) => {
   return (
     <ApplicationContext.Provider
