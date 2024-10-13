@@ -2,20 +2,19 @@ import { memo, PropsWithChildren } from 'react';
 import { SearchInput } from '@/components/shared/SearchInput';
 import './style.scss';
 import { useSearch } from '@/hooks/useSearch';
-import { useLocation } from 'react-router-dom';
 
 type PageComponentProps = {
   onSearch: (search: string) => void;
   error?: boolean;
   loading?: boolean;
+  centeredLayout?: boolean;
 } & PropsWithChildren;
 
-function PageComponent({ children, onSearch, error, loading }: PageComponentProps) {
+function PageComponent({ children, onSearch, error, loading, centeredLayout }: PageComponentProps) {
   const [search] = useSearch();
-  const location = useLocation();
 
   return (
-    <div className={`page page--${search ? 'normal' : 'centered'}`}>
+    <div className={`page page--${(search || !centeredLayout) ? 'normal' : 'centered'}`}>
       <header className='page-header'>
         <div className='page-logo' role='img'>
           <span>Channel</span>
@@ -23,7 +22,7 @@ function PageComponent({ children, onSearch, error, loading }: PageComponentProp
         </div>
         <div className='page-search'>
           <SearchInput
-            autoFocus={location.pathname === '/'}
+            autoFocus={centeredLayout}
             value={search}
             onChange={value => onSearch(value)}
             placeholder='Movie or serie title...'

@@ -1,12 +1,16 @@
 import { Page } from '@/components/sections/Page';
 import { Section } from '@/components/shared/Section';
 import { useSearch } from '@/hooks/useSearch';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function SerieComponent() {
   const [, setSearch] = useSearch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setSearch('');
+  }, []);
 
   return (
     <Page onSearch={(value) => {

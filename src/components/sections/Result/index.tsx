@@ -12,7 +12,7 @@ function ResultComponent() {
   const series = useSeries(search);
 
   return (
-    <Page onSearch={(value) => setSearch(value)}>
+    <Page onSearch={(value) => setSearch(value)} centeredLayout>
       {search && (
         <main>
           <Movies movies={movies} />
