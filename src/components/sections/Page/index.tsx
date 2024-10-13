@@ -6,9 +6,11 @@ import { useLocation } from 'react-router-dom';
 
 type PageComponentProps = {
   onSearch: (search: string) => void;
+  error?: boolean;
+  loading?: boolean;
 } & PropsWithChildren;
 
-function PageComponent({ children, onSearch }: PageComponentProps) {
+function PageComponent({ children, onSearch, error, loading }: PageComponentProps) {
   const [search] = useSearch();
   const location = useLocation();
 
@@ -30,7 +32,9 @@ function PageComponent({ children, onSearch }: PageComponentProps) {
           />
         </div>
       </header>
-      {children}
+      {loading && <p>Loading...</p>}
+      {error && <p role='alert'>Page not found</p>}
+      {!loading && !error && children}
     </div>
   );
 }

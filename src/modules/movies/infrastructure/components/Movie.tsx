@@ -2,21 +2,29 @@ import { Page } from '@/components/sections/Page';
 import { Section } from '@/components/shared/Section';
 import { useSearch } from '@/hooks/useSearch';
 import { memo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useMovie } from '../hooks/useMovie';
 
 function MovieComponent() {
   const [, setSearch] = useSearch();
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { error, movie, loading } = useMovie(Number(id));
 
   return (
-    <Page onSearch={(value) => {
-      navigate('/');
-      setSearch(value);
-    }}
+    <Page
+      onSearch={(value) => {
+        navigate('/');
+        setSearch(value);
+      }}
+      error={error}
+      loading={loading}
     >
-      <Section title='Toto'>
-        Coucou
-      </Section>
+      {movie && (
+        <Section title={movie.title}>
+          Coucou
+        </Section>
+      )}
     </Page>
   );
 }
