@@ -19,9 +19,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const Img = () => <img src='https://placehold.co/240x400?text=Hello+World' />;
+
 export const Simple: Story = {
   args: {
-    children: 'I am a container with a class list and a child',
+    children: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(val => <Img key={val} />),
+    style: { width: '500px' }
   },
 };
 
@@ -43,5 +46,13 @@ export const CommonAttribute: Story = {
   args: {
     id: 'foo',
     children: 'I accept common attributes too',
+  },
+};
+
+export const Scrollable: Story = {
+  args: {
+    scrollable: true,
+    children: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(val => <Img key={val} />),
+    style: { width: '500px' }
   },
 };
