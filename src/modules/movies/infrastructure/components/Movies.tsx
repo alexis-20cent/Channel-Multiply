@@ -2,12 +2,13 @@ import { List } from '@/components/shared/List';
 import { ListItem } from '@/components/shared/ListItem';
 import { Movie } from '../../domain/Movie';
 import { Section } from '@/components/shared/Section';
+import { memo } from 'react';
 
 export type MoviesProps = {
   movies: Movie[];
 };
 
-function Movies({ movies }: MoviesProps) {
+function MoviesComponent({ movies }: MoviesProps) {
   return (
     <Section title='Movies'>
       {movies.length > 0
@@ -30,4 +31,4 @@ function Movies({ movies }: MoviesProps) {
   );
 }
 
-export { Movies };
+export const Movies = memo(MoviesComponent);

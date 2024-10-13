@@ -1,5 +1,6 @@
 import {
   ElementType, HtmlHTMLAttributes,
+  memo,
   PropsWithChildren, useEffect, useRef, useState,
 } from 'react';
 import './style.scss';
@@ -10,7 +11,7 @@ export type ListProps = HtmlHTMLAttributes<HTMLElement> & PropsWithChildren & {
   scrollable?: boolean;
 };
 
-function List({ as, children, className, scrollable, ...props }: ListProps) {
+function ListComponent({ as, children, className, scrollable, ...props }: ListProps) {
   const [leftReached, setLeftReached] = useState(false);
   const [rightReached, setRightReached] = useState(false);
   const [hasMouse, setHasMouse] = useState(false);
@@ -76,4 +77,4 @@ function List({ as, children, className, scrollable, ...props }: ListProps) {
   );
 }
 
-export { List };
+export const List = memo(ListComponent);
