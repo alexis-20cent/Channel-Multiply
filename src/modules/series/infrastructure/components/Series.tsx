@@ -3,6 +3,7 @@ import { ListItem } from '@/components/shared/ListItem';
 import { Serie } from '../../domain/Serie';
 import { Section } from '@/components/shared/Section';
 import { memo } from 'react';
+import { Link } from 'react-router-dom';
 
 export type SeriesProps = {
   series: Serie[];
@@ -16,7 +17,8 @@ function SeriesComponent({ series }: SeriesProps) {
           <List scrollable>
             {series.map(serie => (
               <ListItem
-                as='article'
+                as={Link}
+                to={'/serie/' + serie.id}
                 key={serie.id}
                 title={serie.title}
                 img={serie.image ? `https://image.tmdb.org/t/p/w500/${serie.image}` : null}
