@@ -17,7 +17,8 @@
     "test": "vitest",
     "test:e2e": "playwright test",
     "storybook": "storybook dev -p 6008 --no-open",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+	"generate:module": "node ./.generator/module"
   },
   "dependencies": {
     "@sentry/react": "^8.34.0",
@@ -51,6 +52,7 @@
     "eslint-plugin-react-refresh": "^0.4.12",
     "eslint-plugin-storybook": "^0.9.0",
     "globals": "^15.9.0",
+    "inquirer": "^12.0.0",
     "jsdom": "^25.0.1",
     "neostandard": "^0.11.6",
     "sass": "^1.79.5",
