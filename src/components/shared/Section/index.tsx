@@ -1,4 +1,4 @@
-import { ElementType, HtmlHTMLAttributes, PropsWithChildren } from 'react';
+import { ElementType, HtmlHTMLAttributes, memo, PropsWithChildren } from 'react';
 import './style.scss';
 
 export type SectionProps = HtmlHTMLAttributes<HTMLElement> & PropsWithChildren & {
@@ -7,7 +7,7 @@ export type SectionProps = HtmlHTMLAttributes<HTMLElement> & PropsWithChildren &
   title?: string;
 };
 
-function Section({ as, children, className, title, ...props }: SectionProps) {
+function SectionComponent({ as, children, className, title, ...props }: SectionProps) {
   const Component = as || 'section';
   return (
     <Component className={`section${className ? ' ' + className : ''}`} {...props}>
@@ -17,4 +17,4 @@ function Section({ as, children, className, title, ...props }: SectionProps) {
   );
 }
 
-export { Section };
+export const Section = memo(SectionComponent);
