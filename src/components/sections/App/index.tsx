@@ -1,16 +1,27 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { SearchInput } from '@/components/shared/SearchInput';
 import { Movies } from '@/modules/movies/infrastructure/components/Movies';
 import { Series } from '@/modules/series/infrastructure/components/Series';
 import { useMovies } from '@/modules/movies/infrastructure/hooks/useMovies';
 import { useSeries } from '@/modules/series/infrastructure/hooks/useSeries';
 import './style.scss';
+import { useSearchParams } from 'react-router-dom';
 
 function App() {
-  const [search, setSearch] = useState<string>('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState<string>(searchParams.get('search') || '');
+  const setSearchParamsFn = useCallback(setSearchParams, [setSearchParams]);
 
   const movies = useMovies(search);
   const series = useSeries(search);
+
+  useEffect(() => {
+    if (search) {
+      setSearchParamsFn({ search });
+    } else {
+      setSearchParamsFn();
+    }
+  }, [search, setSearchParamsFn]);
 
   return (
     <div className={`app app--${search ? 'normal' : 'centered'}`}>
