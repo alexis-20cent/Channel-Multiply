@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, memo } from 'react';
 import './style.scss';
 
 export type SearchInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> & {
@@ -6,7 +6,7 @@ export type SearchInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'valu
   onChange: (value: string) => void;
 };
 
-function SearchInput({ value, onChange, ...props }: SearchInputProps) {
+function SearchInputComponent({ value, onChange, ...props }: SearchInputProps) {
   return (
     <input
       type='search'
@@ -18,4 +18,4 @@ function SearchInput({ value, onChange, ...props }: SearchInputProps) {
   );
 }
 
-export { SearchInput };
+export const SearchInput = memo(SearchInputComponent);

@@ -2,12 +2,13 @@ import { List } from '@/components/shared/List';
 import { ListItem } from '@/components/shared/ListItem';
 import { Serie } from '../../domain/Serie';
 import { Section } from '@/components/shared/Section';
+import { memo } from 'react';
 
 export type SeriesProps = {
   series: Serie[];
 };
 
-function Series({ series }: SeriesProps) {
+function SeriesComponent({ series }: SeriesProps) {
   return (
     <Section title='Series'>
       {series.length > 0
@@ -30,4 +31,4 @@ function Series({ series }: SeriesProps) {
   );
 }
 
-export { Series };
+export const Series = memo(SeriesComponent);

@@ -1,4 +1,4 @@
-import { ElementType, HtmlHTMLAttributes } from 'react';
+import { ElementType, HtmlHTMLAttributes, memo } from 'react';
 import './style.scss';
 
 export type ListItemProps = HtmlHTMLAttributes<HTMLElement> & {
@@ -7,7 +7,7 @@ export type ListItemProps = HtmlHTMLAttributes<HTMLElement> & {
   img?: string | null;
 };
 
-function ListItem({ as, title, img, ...props }: ListItemProps) {
+function ListItemComponent({ as, title, img, ...props }: ListItemProps) {
   const Component = as || 'div';
   return (
     <Component className='list-item' {...props}>
@@ -17,4 +17,4 @@ function ListItem({ as, title, img, ...props }: ListItemProps) {
   );
 }
 
-export { ListItem };
+export const ListItem = memo(ListItemComponent);
