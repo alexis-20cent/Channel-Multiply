@@ -1,3 +1,18 @@
-img {
-	max-width: 100%;
+@use './reset';
+
+html {
+	--shadow: 0 2px 4px 0 rgba(0, 0, 0, .13), 0 1px 1px 0 rgba(0, 0, 0, .11);
+	--color: #fee032;
+}
+
+body {
+	font-family: "Nunito Sans", sans-serif;
+	padding: 0 2rem;
+	background-color: #fafafa;
+	color: #616161;
+	overflow-y: scroll;
+}
+
+h1, h2, h3 {
+	color: black;
 }

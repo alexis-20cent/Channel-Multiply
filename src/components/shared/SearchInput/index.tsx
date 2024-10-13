@@ -1,4 +1,5 @@
 import { InputHTMLAttributes } from 'react';
+import './style.scss';
 
 export type SearchInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> & {
   value: string;
@@ -11,6 +12,7 @@ function SearchInput({ value, onChange, ...props }: SearchInputProps) {
       type='search'
       value={value}
       onChange={({ target: { value } }) => onChange(value)}
+      className='search-input'
       {...props}
     />
   );

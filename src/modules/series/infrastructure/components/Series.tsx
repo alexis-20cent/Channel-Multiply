@@ -1,6 +1,7 @@
 import { List } from '@/components/shared/List';
 import { ListItem } from '@/components/shared/ListItem';
 import { Serie } from '../../domain/Serie';
+import { Section } from '@/components/shared/Section';
 
 export type SeriesProps = {
   series: Serie[];
@@ -8,19 +9,24 @@ export type SeriesProps = {
 
 function Series({ series }: SeriesProps) {
   return (
-    <section>
-      <h2>Series</h2>
-      <List>
-        {series.map(serie => (
-          <ListItem
-            as='article'
-            key={serie.id}
-            title={serie.title}
-            img={`https://image.tmdb.org/t/p/w500/${serie.image}`}
-          />
-        ))}
-      </List>
-    </section>
+    <Section title='Series'>
+      {series.length > 0
+        ? (
+          <List scrollable>
+            {series.map(serie => (
+              <ListItem
+                as='article'
+                key={serie.id}
+                title={serie.title}
+                img={serie.image ? `https://image.tmdb.org/t/p/w500/${serie.image}` : null}
+              />
+            ))}
+          </List>
+          )
+        : (
+          <p>No series found.</p>
+          )}
+    </Section>
   );
 }
 

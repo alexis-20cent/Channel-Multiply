@@ -1,0 +1,19 @@
+.search-input {
+	background-color: white;
+	box-shadow: var(--shadow);
+	border: 1px solid transparent;
+	padding: 1rem;
+	width: 100%;
+	margin: auto;
+	display: block;
+	border: 2px solid transparent;
+
+	&:hover {
+		border-color: rgba(0, 0, 0, .2)
+	}
+
+	&:focus {
+		border-color: var(--color);
+		outline: none;
+	}
+}

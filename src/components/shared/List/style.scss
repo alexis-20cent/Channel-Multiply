@@ -1,5 +1,71 @@
+@use '@/styles/vars' as *;
+
 .list {
-	display: grid;
-	grid-template-columns: repeat(8, 1fr);
-	gap: 2rem;
+	position: relative;
+
+	&-inside {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 2rem;
+	
+		@include mq($small) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	
+		@include mq($medium) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	
+		@include mq($large) {
+			grid-template-columns: repeat(6, 1fr);
+		}
+	}
+
+	&--scrollable {
+		.list-outside {
+			overflow-y: auto;
+			scrollbar-width: thin;
+			scrollbar-color: rgba(0, 0, 0, .05) transparent;
+	
+			&:hover {
+				scrollbar-color: rgba(0, 0, 0, .2) transparent;
+			}
+		}
+
+		.list-inside {
+			grid-template-columns: repeat(var(--length), 15rem);
+		}
+	}
+
+	.list-arrow {
+		border-radius: 50%;
+		width: 3rem;
+		height: 3rem;
+		font-size: 1.5em;
+		display: grid;
+		place-items: center;
+		position: absolute;
+		background-color: white;
+		box-shadow: var(--shadow);
+		z-index: 9;
+		cursor: pointer;
+		line-height: 1;
+		padding: 0;
+		border: 0;
+		color: #999;
+		top: calc(200px - 1.5rem);
+
+		&:hover {
+			background-color: var(--color, #eee);
+			color: black;
+		}
+
+		&--left {
+			left: 1rem;
+		}
+
+		&--right {
+			right: 1rem;
+		}
+	}
 }
