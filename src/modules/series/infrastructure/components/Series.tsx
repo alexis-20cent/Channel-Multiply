@@ -10,16 +10,22 @@ export type SeriesProps = {
 function Series({ series }: SeriesProps) {
   return (
     <Section title='Series'>
-      <List>
-        {series.map(serie => (
-          <ListItem
-            as='article'
-            key={serie.id}
-            title={serie.title}
-            img={serie.image ? `https://image.tmdb.org/t/p/w500/${serie.image}` : null}
-          />
-        ))}
-      </List>
+      {series.length > 0
+        ? (
+          <List scrollable>
+            {series.map(serie => (
+              <ListItem
+                as='article'
+                key={serie.id}
+                title={serie.title}
+                img={serie.image ? `https://image.tmdb.org/t/p/w500/${serie.image}` : null}
+              />
+            ))}
+          </List>
+          )
+        : (
+          <p>No series found.</p>
+          )}
     </Section>
   );
 }

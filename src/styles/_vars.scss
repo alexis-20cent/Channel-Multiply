@@ -3,7 +3,7 @@ $medium: 40rem;
 $large: 60rem;
 
 @mixin mq($min: $large){
-	@media screen and (min-width:$min){
+	@media screen and (min-width: $min){
 		@content;
 	}
 }

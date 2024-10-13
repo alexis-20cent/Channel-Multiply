@@ -10,16 +10,22 @@ export type MoviesProps = {
 function Movies({ movies }: MoviesProps) {
   return (
     <Section title='Movies'>
-      <List>
-        {movies.map(movie => (
-          <ListItem
-            as='article'
-            key={movie.id}
-            title={movie.title}
-            img={movie.image ? `https://image.tmdb.org/t/p/w500/${movie.image}` : null}
-          />
-        ))}
-      </List>
+      {movies.length > 0
+        ? (
+          <List scrollable>
+            {movies.map(movie => (
+              <ListItem
+                as='article'
+                key={movie.id}
+                title={movie.title}
+                img={movie.image ? `https://image.tmdb.org/t/p/w500/${movie.image}` : null}
+              />
+            ))}
+          </List>
+          )
+        : (
+          <p>No movies found.</p>
+          )}
     </Section>
   );
 }
