@@ -28,7 +28,7 @@ function ListComponent({ as, children, className, scrollable, ...props }: ListPr
 
       const scroll = () => {
         setLeftReached((parent?.scrollLeft || 0) < 1);
-        setRightReached((parent?.scrollLeft || 0) >= ((parent?.scrollWidth && parent?.clientWidth && parent.scrollWidth - parent.clientWidth) || 1));
+        setRightReached((parent?.scrollLeft || 0) >= ((Number(parent?.scrollWidth) - Number(parent?.clientWidth)) || 1) || Number(parent?.scrollWidth) <= Number(parent?.clientWidth));
       };
 
       scroll();
