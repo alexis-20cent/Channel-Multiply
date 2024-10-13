@@ -1,0 +1,15 @@
+version: '3'
+services:
+  canal-multiply:
+    container_name: canal-multiply
+    build:
+      context: .
+    ports:
+      - "4173:4173"
+      - "5173:5173"
+      - "6005:6005"
+      - "6008:6008"
+    stdin_open: true
+    tty: true
+    volumes:
+       - ./:/app
