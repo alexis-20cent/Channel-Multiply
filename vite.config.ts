@@ -14,7 +14,10 @@ export default defineConfig({
 
   plugins: [react(), sentryVitePlugin({
     org: 'canal-multiply',
-    project: 'javascript-react'
+    project: 'javascript-react',
+    release: {
+      name: 'canal-multiply',
+    }
   })],
 
   resolve: {
@@ -25,5 +28,9 @@ export default defineConfig({
 
   build: {
     sourcemap: true
+  },
+
+  server: {
+    host: true,
   }
 });

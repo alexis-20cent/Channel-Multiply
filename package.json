@@ -12,11 +12,11 @@
     "lint:types": "yarn lint && yarn types",
     "preview": "vite preview",
     "doc": "typedoc --entryPointStrategy expand ./src --externalPattern '/**/*.stories.ts' --excludeExternals",
-    "doc:preview": "vite preview --outDir docs",
+    "doc:preview": "vite preview --outDir docs --port 6005",
     "test:coverage": "vitest run --coverage",
     "test": "vitest",
     "test:e2e": "playwright test",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6008 --no-open",
     "build-storybook": "storybook build"
   },
   "dependencies": {
