@@ -1,5 +1,19 @@
+@use '@/styles/vars' as *;
+
 .list {
 	display: grid;
-	grid-template-columns: repeat(8, 1fr);
+	grid-template-columns: repeat(1, 1fr);
 	gap: 2rem;
+
+	@include mq($small) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include mq($medium) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	@include mq($large) {
+		grid-template-columns: repeat(6, 1fr);
+	}
 }
