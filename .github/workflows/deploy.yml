@@ -15,11 +15,11 @@ jobs:
         cache: 'yarn'
     - run: yarn --frozen-lockfile
     - run: yarn doc
-    - run: cp ./docs/index.html ./docs/200.html
+    - run: mv ./docs/index.html ./docs/200.html
     - name: Deploy doc
       uses: dswistowski/surge-sh-action@v1
       with:
-        domain: 'docs.canalmultiply.surge.sh'
+        domain: 'docs.channelmultiply.surge.sh'
         project: './docs'
         login: ${{ secrets.SURGE_LOGIN }}
         token: ${{ secrets.SURGE_TOKEN }}
@@ -34,11 +34,11 @@ jobs:
         cache: 'yarn'
     - run: yarn --frozen-lockfile
     - run: yarn build-storybook
-    - run: cp ./storybook-static/index.html ./storybook-static/200.html
+    - run: mv ./storybook-static/index.html ./storybook-static/200.html
     - name: Deploy storybook
       uses: dswistowski/surge-sh-action@v1
       with:
-        domain: 'story.canalmultiply.surge.sh'
+        domain: 'story.channelmultiply.surge.sh'
         project: './storybook-static'
         login: ${{ secrets.SURGE_LOGIN }}
         token: ${{ secrets.SURGE_TOKEN }}
@@ -53,11 +53,11 @@ jobs:
         cache: 'yarn'
     - run: yarn --frozen-lockfile
     - run: yarn build
-    - run: cp ./dist/index.html ./dist/200.html
+    - run: mv ./dist/index.html ./dist/200.html
     - name: Deploy build
       uses: dswistowski/surge-sh-action@v1
       with:
-        domain: 'canalmultiply.surge.sh'
+        domain: 'channelmultiply.surge.sh'
         project: './dist'
         login: ${{ secrets.SURGE_LOGIN }}
         token: ${{ secrets.SURGE_TOKEN }}
