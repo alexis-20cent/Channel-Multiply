@@ -8,7 +8,7 @@ export type SeriesProps = {
 
 function SeriesComponent({ series }: SeriesProps) {
   return (
-    <Contents type='Serie' items={series} />
+    <Contents type='Series' items={series} />
   );
 }
 
