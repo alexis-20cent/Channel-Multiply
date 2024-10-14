@@ -7,7 +7,7 @@ export type ListItemProps = HtmlHTMLAttributes<HTMLElement> & {
   img?: string | null;
 } & Record<string, unknown>;
 
-function ListItemComponent({ as, title, img, ...props }: ListItemProps) {
+export function ListItemComponent({ as, title, img, ...props }: ListItemProps) {
   const Component = as || 'div';
   return (
     <Component className='list-item' {...props}>

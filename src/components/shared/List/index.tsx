@@ -11,7 +11,7 @@ export type ListProps = HtmlHTMLAttributes<HTMLElement> & PropsWithChildren & {
   scrollable?: boolean;
 };
 
-function ListComponent({ as, children, className, scrollable, ...props }: ListProps) {
+export function ListComponent({ as, children, className, scrollable, ...props }: ListProps) {
   const [leftReached, setLeftReached] = useState(false);
   const [rightReached, setRightReached] = useState(false);
   const [hasMouse, setHasMouse] = useState(false);
