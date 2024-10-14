@@ -33,6 +33,7 @@ export default tseslint.config(
       ],
       '@stylistic/semi': ['error', 'always'],
 	  '@stylistic/space-before-function-paren': ['error', 'never'],
+	  'react-hooks/exhaustive-deps': 0,
     },
   }
 );

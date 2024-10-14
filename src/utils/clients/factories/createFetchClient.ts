@@ -1,25 +1,25 @@
 import { Params, request } from '../../helpers/request';
 
-export function createFetchClient<T>(basePath: string, baseParams: Params = {}, baseOptions?: RequestInit) {
+export function createFetchClient<T>(basePath: string, baseParams: Params = {}, baseOptions?: RequestInit, suffix: string = '') {
   return {
     async get(path: string, params: Params = {}, options: Omit<RequestInit, 'method'> = {}) {
-      return request<T>(basePath + path, { ...baseParams, ...params }, { ...baseOptions, ...options, method: 'GET' });
+      return request<T>(basePath + path + suffix, { ...baseParams, ...params }, { ...baseOptions, ...options, method: 'GET' });
     },
 
     async post(path: string, params: Params = {}, options: Omit<RequestInit, 'method'> = {}) {
-      return request<T>(basePath + path, { ...baseParams, ...params }, { ...baseOptions, ...options, method: 'POST' });
+      return request<T>(basePath + path + suffix, { ...baseParams, ...params }, { ...baseOptions, ...options, method: 'POST' });
     },
 
     async put(path: string, params: Params = {}, options: Omit<RequestInit, 'method'> = {}) {
-      return request<T>(basePath + path, { ...baseParams, ...params }, { ...baseOptions, ...options, method: 'PUT' });
+      return request<T>(basePath + path + suffix, { ...baseParams, ...params }, { ...baseOptions, ...options, method: 'PUT' });
     },
 
     async patch(path: string, params: Params = {}, options: Omit<RequestInit, 'method'> = {}) {
-      return request<T>(basePath + path, { ...baseParams, ...params }, { ...baseOptions, ...options, method: 'PATCH' });
+      return request<T>(basePath + path + suffix, { ...baseParams, ...params }, { ...baseOptions, ...options, method: 'PATCH' });
     },
 
     async delete(path: string, params: Params = {}, options: Omit<RequestInit, 'method'> = {}) {
-      return request<T>(basePath + path, { ...baseParams, ...params }, { ...baseOptions, ...options, method: 'DELETE' });
+      return request<T>(basePath + path + suffix, { ...baseParams, ...params }, { ...baseOptions, ...options, method: 'DELETE' });
     }
   };
 }

@@ -1,0 +1,41 @@
+@use '@/styles/vars' as *;
+
+.content {
+	max-width: 70rem;
+	margin: auto;
+
+	&-inside {
+		display: grid;
+		gap: 2rem;
+		@include mq($small) {
+			grid-template-columns: 1fr 2fr;
+		}
+	}
+
+	&-img {
+		border-radius: 5px;
+		box-shadow: var(--shadow);
+	}
+
+	&-lighter {
+		font-weight: 300;
+	}
+
+	&-title {
+		font-weight: bold;
+		color: black;
+		font-size: 1.2em;
+		margin: .83em 0;
+		padding-bottom: .5em;
+		border-bottom: 1px solid rgba(0, 0, 0, .2);
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	.list-item-title {
+		min-height: 0;
+		font-size: .7em;
+	}
+}
