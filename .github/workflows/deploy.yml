@@ -54,7 +54,6 @@ jobs:
     - run: yarn --frozen-lockfile
     - run: yarn build
     - run: mv ./dist/index.html ./dist/200.html
-    - run: ls dist
     - name: Deploy build
       uses: dswistowski/surge-sh-action@v1
       with:
