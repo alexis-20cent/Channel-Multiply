@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { List } from '.';
+import { ListComponent as List } from '.';
 
 const meta = {
   title: 'Shared/List',

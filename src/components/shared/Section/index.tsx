@@ -7,7 +7,7 @@ export type SectionProps = HtmlHTMLAttributes<HTMLElement> & PropsWithChildren &
   title?: string;
 };
 
-function SectionComponent({ as, children, className, title, ...props }: SectionProps) {
+export function SectionComponent({ as, children, className, title, ...props }: SectionProps) {
   const Component = as || 'section';
   return (
     <Component className={`section${className ? ' ' + className : ''}`} {...props}>

@@ -6,7 +6,7 @@ export type SearchInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'valu
   onChange: (value: string) => void;
 };
 
-function SearchInputComponent({ value, onChange, ...props }: SearchInputProps) {
+export function SearchInputComponent({ value, onChange, ...props }: SearchInputProps) {
   return (
     <input
       type='search'
