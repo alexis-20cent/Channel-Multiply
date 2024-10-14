@@ -1,11 +1,16 @@
+import { Actor, ensureActorIsValid } from '@/modules/actors/domain/Actor';
+
 export type Content = {
   id: number,
   title: string,
   image?: string | null,
   description?: string | null,
+  year?: string | null,
+  countries?: string[] | null,
+  actors?: Actor[] | null,
 };
 
-export function ensureContentIsValid<T extends Content>({ id, title, image, description }: T): void {
+export function ensureContentIsValid<T extends Content>({ id, title, image, description, year, countries, actors }: T): void {
   if (!isContentIdValid(id)) {
     throw ContentIdNotValidError(id);
   }
@@ -15,8 +20,17 @@ export function ensureContentIsValid<T extends Content>({ id, title, image, desc
   if (!isContentImageValid(image)) {
     throw ContentImageNotValidError(image);
   }
-  if (!isDescriptionValid(description)) {
+  if (!isContentDescriptionValid(description)) {
     throw ContentDescriptionNotValidError(description);
+  }
+  if (!isContentYearValid(year)) {
+    throw ContentYearNotValidError(year);
+  }
+  if (!isContentCountriesValid(countries)) {
+    throw ContentCountriesNotValidError(countries);
+  }
+  if (!isContentActorsValid(actors)) {
+    throw ContentActorsNotValidError(actors);
   }
 }
 
@@ -32,8 +46,20 @@ export function isContentImageValid(image?: string | null): boolean {
   return !image || typeof image === 'string';
 }
 
-export function isDescriptionValid(description?: string | null): boolean {
+export function isContentDescriptionValid(description?: string | null): boolean {
   return !description || typeof description === 'string';
+}
+
+export function isContentYearValid(year?: string | null): boolean {
+  return !year || typeof year === 'string';
+}
+
+export function isContentCountriesValid(countries?: string[] | null): boolean {
+  return !countries || (Array.isArray(countries) && countries.every(country => typeof country === 'string'));
+}
+
+export function isContentActorsValid(actors?: Actor[] | null): boolean {
+  return !actors || (Array.isArray(actors) && actors.every(ensureActorIsValid));
 }
 
 export function ContentIdNotValidError(id: unknown): Error {
@@ -50,4 +76,16 @@ export function ContentImageNotValidError(image?: unknown): Error {
 
 export function ContentDescriptionNotValidError(description?: unknown): Error {
   return new Error(`Description ${description} is not valid`);
+}
+
+export function ContentYearNotValidError(year?: unknown): Error {
+  return new Error(`Year ${year} is not valid`);
+}
+
+export function ContentCountriesNotValidError(countries?: unknown): Error {
+  return new Error(`Countries ${countries} is not valid`);
+}
+
+export function ContentActorsNotValidError(actors?: unknown): Error {
+  return new Error(`Actors ${actors} is not valid`);
 }

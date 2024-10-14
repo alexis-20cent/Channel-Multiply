@@ -23,7 +23,7 @@ function ContentsComponent({ type, items }: ContentsProps) {
                 to={'/' + loweredType + '/' + item.id}
                 key={item.id}
                 title={item.title}
-                img={item.image ? `https://image.tmdb.org/t/p/w500/${item.image}` : null}
+                img={item.image ? `https://image.tmdb.org/t/p/w500${item.image}` : null}
               />
             ))}
           </List>
