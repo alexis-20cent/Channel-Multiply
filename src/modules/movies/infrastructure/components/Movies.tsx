@@ -8,7 +8,7 @@ export type MoviesProps = {
 
 function MoviesComponent({ movies }: MoviesProps) {
   return (
-    <Contents type='Movie' items={movies} />
+    <Contents type='Movies' items={movies} />
   );
 }
 

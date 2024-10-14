@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Content } from '../../domain/Content';
 
 export type ContentsProps = {
-  type: 'Movie' | 'Serie';
+  type: 'Movies' | 'Series';
   items: Content[];
 };
 
@@ -29,7 +29,7 @@ function ContentsComponent({ type, items }: ContentsProps) {
           </List>
           )
         : (
-          <p>No {loweredType}s found.</p>
+          <p>No {loweredType} found.</p>
           )}
     </Section>
   );
