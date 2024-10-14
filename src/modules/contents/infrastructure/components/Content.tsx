@@ -1,38 +1,40 @@
-import { List } from '@/components/shared/List';
-import { ListItem } from '@/components/shared/ListItem';
+import { Page } from '@/components/sections/Page';
 import { Section } from '@/components/shared/Section';
-import { memo } from 'react';
-import { Link } from 'react-router-dom';
-import { Content } from '../../domain/Content';
+import { useSearch } from '@/hooks/useSearch';
+import { memo, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Content as ContentType } from '../../domain/Content';
 
-export type ContentsProps = {
-  type: 'Movie' | 'Serie';
-  items: Content[];
+type ContentProps = {
+  error: boolean,
+  item?: ContentType | null,
+  loading: boolean,
 };
 
-function ContentsComponent({ type, items }: ContentsProps) {
-  const loweredType = type.toLowerCase();
+function ContentComponent({ error, item, loading }: ContentProps) {
+  const [, setSearch] = useSearch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setSearch('');
+  }, []);
+
   return (
-    <Section title={type}>
-      {items.length > 0
-        ? (
-          <List scrollable>
-            {items.map(item => (
-              <ListItem
-                as={Link}
-                to={'/' + loweredType + '/' + item.id}
-                key={item.id}
-                title={item.title}
-                img={item.image ? `https://image.tmdb.org/t/p/w500/${item.image}` : null}
-              />
-            ))}
-          </List>
-          )
-        : (
-          <p>No {loweredType}s found.</p>
-          )}
-    </Section>
+    <Page
+      onSearch={(value) => {
+        navigate('/');
+        setSearch(value);
+      }}
+      error={error}
+      loading={loading}
+    >
+      {item && (
+        <Section title={item.title}>
+          Coucou
+        </Section>
+      )}
+    </Page>
   );
 }
 
-export const Contents = memo(ContentsComponent);
+export const Content = memo(ContentComponent);

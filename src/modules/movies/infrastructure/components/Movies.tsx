@@ -1,6 +1,6 @@
 import { Movie } from '../../domain/Movie';
 import { memo } from 'react';
-import { Contents } from '@/modules/contents/infrastructure/components/Content';
+import { Contents } from '@/modules/contents/infrastructure/components/Contents';
 
 export type MoviesProps = {
   movies: Movie[];

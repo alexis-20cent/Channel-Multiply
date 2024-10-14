@@ -1,27 +1,18 @@
-import { Page } from '@/components/sections/Page';
-import { Section } from '@/components/shared/Section';
-import { useSearch } from '@/hooks/useSearch';
-import { memo, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { memo } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSerie } from '../hooks/useSerie';
+import { Content } from '@/modules/contents/infrastructure/components/Content';
 
 function SerieComponent() {
-  const [, setSearch] = useSearch();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    setSearch('');
-  }, []);
+  const { id } = useParams();
+  const { error, serie, loading } = useSerie(Number(id));
 
   return (
-    <Page onSearch={(value) => {
-      navigate('/');
-      setSearch(value);
-    }}
-    >
-      <Section title='Toto'>
-        Coucou
-      </Section>
-    </Page>
+    <Content
+      error={error}
+      item={serie}
+      loading={loading}
+    />
   );
 }
 

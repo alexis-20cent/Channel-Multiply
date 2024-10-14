@@ -1,6 +1,6 @@
 import { Serie } from '../../domain/Serie';
 import { memo } from 'react';
-import { Contents } from '@/modules/contents/infrastructure/components/Content';
+import { Contents } from '@/modules/contents/infrastructure/components/Contents';
 
 export type SeriesProps = {
   series: Serie[];
