@@ -1,5 +1,5 @@
 import * as content from "@/modules/contents/domain/Content";
-import { movie } from "../../../__data__/movies";
+import { movie }    from "../../../__data__/movies";
 
 describe('content', () => {
   describe('ensureContentIsValid', () => {
@@ -59,15 +59,39 @@ describe('content', () => {
     });
   });
 
-  describe('isDescriptionValid', () => {
+  describe('isContentDescriptionValid', () => {
     test('should accept a string', () => {
-      expect(content.isDescriptionValid('1')).toBeTruthy();
+      expect(content.isContentDescriptionValid('1')).toBeTruthy();
     });
     test('should refuse something else', () => {
-      expect(content.isDescriptionValid(1 as never)).toBeFalsy();
-      expect(content.isDescriptionValid(true as never)).toBeFalsy();
-      expect(content.isDescriptionValid([] as never)).toBeFalsy();
-      expect(content.isDescriptionValid({} as never)).toBeFalsy();
+      expect(content.isContentDescriptionValid(1 as never)).toBeFalsy();
+      expect(content.isContentDescriptionValid(true as never)).toBeFalsy();
+      expect(content.isContentDescriptionValid([] as never)).toBeFalsy();
+      expect(content.isContentDescriptionValid({} as never)).toBeFalsy();
+    });
+  });
+
+  describe('isContentYearValid', () => {
+    test('should accept a string', () => {
+      expect(content.isContentYearValid('1')).toBeTruthy();
+    });
+    test('should refuse something else', () => {
+      expect(content.isContentYearValid(1 as never)).toBeFalsy();
+      expect(content.isContentYearValid(true as never)).toBeFalsy();
+      expect(content.isContentYearValid([] as never)).toBeFalsy();
+      expect(content.isContentYearValid({} as never)).toBeFalsy();
+    });
+  });
+
+  describe('isContentCountriesValid', () => {
+    test('should accept an array of string', () => {
+      expect(content.isContentCountriesValid(['1', '2'])).toBeTruthy();
+    });
+    test('should refuse something else', () => {
+      expect(content.isContentCountriesValid(1 as never)).toBeFalsy();
+      expect(content.isContentCountriesValid(true as never)).toBeFalsy();
+      expect(content.isContentCountriesValid([3, 4] as never)).toBeFalsy();
+      expect(content.isContentCountriesValid({} as never)).toBeFalsy();
     });
   });
 
@@ -92,6 +116,18 @@ describe('content', () => {
   describe('ContentDescriptionNotValidError', () => {
     test('should give an Error object', () => {
       expect(content.ContentDescriptionNotValidError('1')).toBeInstanceOf(Error);
+    });
+  });
+
+  describe('ContentYearNotValidError', () => {
+    test('should give an Error object', () => {
+      expect(content.ContentYearNotValidError('1')).toBeInstanceOf(Error);
+    });
+  });
+
+  describe('ContentCountriesNotValidError', () => {
+    test('should give an Error object', () => {
+      expect(content.ContentCountriesNotValidError(['1'])).toBeInstanceOf(Error);
     });
   });
 });
