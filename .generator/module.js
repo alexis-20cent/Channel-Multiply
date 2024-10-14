@@ -44,9 +44,8 @@ const ask = async () => {
   const loweredName = name.toLowerCase();
 	
 	createDir(`/${loweredName}s`);
-	createDir(`/${loweredName}s/application`);
 	createDir(`/${loweredName}s/domain`);
-	createDir(`/${loweredName}/sinfrastructure`);
+	createDir(`/${loweredName}s/infrastructure`);
 	createFile(`/${loweredName}s/domain/${name}.ts`, `export type ${name} = {\n  example: string; // todo\n};\n`);
 	createFile(`/${loweredName}s/domain/${name}Repository.ts`, `import { ${name} } from './${name}';\n\nexport type ${name}Repository<T extends ${name}> = {\n  exampleGet: (id: number) => Promise<T | null>;\n}; // todo\n`);
 }
