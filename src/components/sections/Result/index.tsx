@@ -15,8 +15,17 @@ function ResultComponent() {
     <Page onSearch={(value) => setSearch(value)} centeredLayout>
       {search && (
         <main>
-          <Movies movies={movies} />
-          <Series series={series} />
+          {(movies.error || series.error) && <p>An error occured while fetching contents.</p>}
+          {(movies.loading || series.loading)
+            ? (
+              <p>Please wait...</p>
+              )
+            : (
+              <>
+                <Movies movies={movies.contents} />
+                <Series series={series.contents} />
+              </>
+              )}
         </main>
       )}
     </Page>

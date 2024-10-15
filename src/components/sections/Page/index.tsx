@@ -2,6 +2,7 @@ import { memo, PropsWithChildren } from 'react';
 import { SearchInput } from '@/components/shared/SearchInput';
 import './style.scss';
 import { useSearch } from '@/hooks/useSearch';
+import { Link } from 'react-router-dom';
 
 type PageComponentProps = {
   onSearch: (search: string) => void;
@@ -16,10 +17,10 @@ function PageComponent({ children, onSearch, error, loading, centeredLayout }: P
   return (
     <div className={`page page--${(search || !centeredLayout) ? 'normal' : 'centered'}`}>
       <header className='page-header'>
-        <div className='page-logo' role='img'>
+        <Link className='page-logo' role='img' to='/'>
           <span>Channel</span>
           <img src='/logo.svg' alt='*' />
-        </div>
+        </Link>
         <div className='page-search'>
           <SearchInput
             autoFocus={centeredLayout}
