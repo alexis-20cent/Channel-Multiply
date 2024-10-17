@@ -8,9 +8,9 @@ export function useSearch(): [string, Dispatch<SetStateAction<string>>] {
 
   useEffect(() => {
     if (search) {
-      setSearchParams({ search });
+      setSearchParams({ search }, { replace: true });
     } else {
-      setSearchParams();
+      setSearchParams({}, { replace: true });
     }
   }, [search]);
 
