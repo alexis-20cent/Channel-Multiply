@@ -391,7 +391,7 @@ It will be at https://channelmultiply.surge.sh
 
 ### 2.1 User stories
 
-We have 2 epics [defined here](`https://github.com/alexis-20cent/Channel-Multiply/milestones`)
+We have 2 epics [defined here](https://github.com/alexis-20cent/Channel-Multiply/milestones)
 
 They contain our user stories [listed here](https://github.com/alexis-20cent/Channel-Multiply/issues?q=is%3Aissue+) as github issues
 
